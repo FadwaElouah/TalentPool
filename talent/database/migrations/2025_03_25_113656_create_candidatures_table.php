@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('candidatures', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('offer_post_id')->constrained('offer_posts')->onDelete('cascade');
+            $table->foreignId('candidature_state_id')->constrained('candidature_states');
+            $table->string('cv_path');
+            $table->string('cover_letter_path')->nullable();
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }

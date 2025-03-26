@@ -13,6 +13,14 @@ return new class extends Migration
     {
         Schema::create('offer_posts', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->string('title');
+            $table->text('description');
+            $table->string('location');
+            $table->string('type'); // full-time, part-time, etc.
+            $table->decimal('salary', 10, 2)->nullable();
+            $table->date('deadline');
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
