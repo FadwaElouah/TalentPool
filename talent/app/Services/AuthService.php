@@ -35,7 +35,7 @@ class AuthService
     {
         if (!$token = Auth::attempt($credentials)) {
             return false;
-        } 
+        }
 
         // Retrieve the authenticated user
         $user = Auth::user();

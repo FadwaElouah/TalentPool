@@ -3,19 +3,18 @@
 namespace App\Http\Middleware;
 
 use Closure;
-use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
+use Tymon\JWTAuth\Facades\JWTAuth;
 
 class EnsureUserIsRecruiter
 {
-    public function handle(Request $request, Closure $next): Response
+    public function handle($request, Closure $next)
     {
-        if (!auth()->check() || !auth()->user()->isRecruiter()) {
-            return response()->json(['message' => 'Unauthorized. Recruiter access required.'], 403);
+        $user = JWTAuth::parseToken()->authenticate();
+
+        if (!$user || $user->role !== 'recruiter') {
+            return response()->json(['message' => 'Unauthorized'], 403);
         }
 
         return $next($request);
     }
 }
-
-
