@@ -11,7 +11,7 @@ class EnsureUserIsRecruiter
     {
         $user = JWTAuth::parseToken()->authenticate();
 
-        if (!$user || $user->role !== 'recruiter') {
+        if (!$user || $user->role !== 'recruteur') {
             return response()->json(['message' => 'Unauthorized'], 403);
         }
 

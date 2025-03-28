@@ -43,13 +43,13 @@ Route::group(['prefix' => 'auth'], function () {
 });
 
 // Offer Posts Routes
-// Route::apiResource('offer-posts', OfferPostController::class);
-// Route::get('recruiter/offer-posts', [OfferPostController::class, 'recruiterOffers'])->middleware(['auth:api', 'recruiter']);
-Route::apiResource('offer-posts', OfferPostController::class)
-    ->middleware('jwt.verify');
+Route::apiResource('offer-posts', OfferPostController::class);
+Route::get('recruiter/offer-posts', [OfferPostController::class, 'recruiterOffers'])->middleware(['auth:api', 'recruiter']);
+// Route::apiResource('offer-posts', OfferPostController::class)
+//     ->middleware('jwt.verify');
 
-Route::get('recruiter/offer-posts', [OfferPostController::class, 'recruiterOffers'])
-    ->middleware(['jwt.verify', 'recruiter']);
-// Route::middleware('auth:api')->group(function () {
+// Route::get('recruiter/offer-posts', [OfferPostController::class, 'recruiterOffers'])
+//     ->middleware(['jwt.verify', 'recruiter']);
+// // Route::middleware('auth:api')->group(function () {
 
 // });

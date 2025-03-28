@@ -27,9 +27,19 @@ class OfferPostController extends Controller
         return OfferPostResource::collection($offers);
     }
 
-    public function store(StoreOfferPostRequest $request)
+    public function store(Request $request)
     {
-        $offer = $this->offerPostService->createOffer($request->validated());
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'location' => 'required|string|max:255',
+            'type' => 'required|string|max:50',
+            'salary' => 'nullable|numeric|min:0',
+            'deadline' => 'required|date|after:today',
+            'is_active' => 'boolean'
+        ]);
+
+        $offer = $this->offerPostService->createOffer($validated);
         return new OfferPostResource($offer);
     }
 
