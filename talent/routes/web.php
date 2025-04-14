@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecruteurController;
 use App\Http\Controllers\CandidatController;
+use Laravel\Fortify\Features;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,6 +33,15 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/recruteur/dashboard', [RecruteurController::class, 'dashboard'])->middleware(['auth', 'role:recruteur']);
 Route::get('/candidat/dashboard', [CandidatController::class, 'dashboard'])->middleware(['auth', 'role:candidat']);
+
+
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
 
 
 require __DIR__.'/auth.php';
