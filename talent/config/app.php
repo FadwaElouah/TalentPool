@@ -170,6 +170,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+        App\Providers\FortifyServiceProvider::class,
+        
     ])->toArray(),
 
     /*
