@@ -1,5 +1,6 @@
 <x-guest-layout>
 
+    
      {{-- Flash Messages --}}
      @include('components.flash-message')
     <!-- Session Status -->

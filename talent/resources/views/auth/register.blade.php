@@ -1,7 +1,11 @@
 <x-guest-layout>
+
+     {{-- Flash Messages --}}
+     @include('components.flash-message')
+     
     <form method="POST" action="{{ route('register') }}">
         {{-- resources/views/components/flash-message.blade.php --}}
-         
+
 
         @csrf
 
