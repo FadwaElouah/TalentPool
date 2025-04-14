@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\RecruteurController;
+use App\Http\Controllers\CandidatController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +19,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::get('/recruteur/dashboard', [RecruteurController::class, 'dashboard'])->middleware(['auth', 'role:recruteur']);
+Route::get('/candidat/dashboard', [CandidatController::class, 'dashboard'])->middleware(['auth', 'role:candidat']);
+
+
+require __DIR__.'/auth.php';

@@ -59,21 +59,34 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Candidature::class);
     }
 
+    // public function isAdmin()
+    // {
+    //     return $this->role && $this->role->name === UserRole::ADMIN;
+    // }
+
+    // public function isRecruiter()
+    // {
+    //     return $this->role && $this->role->name === UserRole::RECRUITER;
+    // }
+
+    // public function isCandidate()
+    // {
+    //     return $this->role && $this->role->name === UserRole::CANDIDATE;
+    // }
     public function isAdmin()
     {
-        return $this->role && $this->role->name === UserRole::ADMIN;
+        return $this->role === "admin";
     }
 
     public function isRecruiter()
     {
-        return $this->role && $this->role->name === UserRole::RECRUITER;
+        return $this->role === "recruteur";
     }
 
     public function isCandidate()
     {
-        return $this->role && $this->role->name === UserRole::CANDIDATE;
+        return $this->role === "candidat";
     }
-
     /**
      * Get the identifier that will be stored in the subject claim of the JWT.
      *

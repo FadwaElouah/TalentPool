@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\OfferPostController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CandidatureController;
 
 
 /*
@@ -53,3 +54,19 @@ Route::get('recruiter/offer-posts', [OfferPostController::class, 'recruiterOffer
 // // Route::middleware('auth:api')->group(function () {
 
 // });
+
+// Candidature Routes
+Route::get('candidatures', [CandidatureController::class, 'index'])->middleware(['auth:api', 'candidate']);
+Route::post('offer-posts/{id}/apply', [CandidatureController::class, 'store'])->middleware(['auth:api', 'candidate']);
+Route::delete('candidatures/{id}', [CandidatureController::class, 'withdraw'])->middleware(['auth:api', 'candidate']);
+Route::get('offer-posts/{id}/candidatures', [CandidatureController::class, 'jobApplications'])->middleware(['auth:api', 'recruiter']);
+Route::put('candidatures/{id}/status', [CandidatureController::class, 'updateStatus'])->middleware(['auth:api', 'recruiter']);
+
+
+Route::middleware(['auth', 'role:recruteur'])->group(function () {
+
+});
+
+Route::middleware(['auth', 'role:candidat'])->group(function () {
+   
+});
