@@ -39,10 +39,14 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
-        <select name="role" required>
-            <option value="candidat">Candidat</option>
-            <option value="recruteur">Recruteur</option>
-        </select>
+        <div>
+            <label for="role">Role:</label>
+            <select name="role" id="role" required class="block mt-1 w-full">
+                <option value="candidat">Candidat</option>
+                <option value="recruteur">Recruteur</option>
+            </select>
+          </div>
+
 
 
         <div class="flex items-center justify-end mt-4">
