@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecruteurController;
 use App\Http\Controllers\CandidatController;
 use Laravel\Fortify\Features;
-use App\Http\Controllers\Api\OfferPostController
+use App\Http\Controllers\Api\OfferPostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +47,7 @@ Route::get('/register', function () {
 // ==========
 
 // routes/web.php
-use App\Http\Controllers\OfferPostController;
+
 
 Route::middleware(['auth', 'isRecruiter'])->group(function () {
     Route::get('/offers/create', [OfferPostController::class, 'create'])->name('offers.create');
