@@ -43,6 +43,15 @@ Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
 
+// ==========
+
+// routes/web.php
+use App\Http\Controllers\OfferPostController;
+
+Route::middleware(['auth', 'isRecruiter'])->group(function () {
+    Route::get('/offers/create', [OfferPostController::class, 'create'])->name('offers.create');
+    Route::post('/offers', [OfferPostController::class, 'store'])->name('offers.store');
+});
 
 
 require __DIR__.'/auth.php';
