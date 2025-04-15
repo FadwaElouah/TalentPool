@@ -44,7 +44,7 @@ class LoginRequest extends FormRequest
         if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
 
-            session()->flash('error', '❌ Email ou mot de passe incorrect !');
+            session()->flash('error', ' Email ou mot de passe incorrect !');
 
             throw ValidationException::withMessages([
                 'email' => trans('auth.failed'),
