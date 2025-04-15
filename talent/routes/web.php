@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RecruteurController;
 use App\Http\Controllers\CandidatController;
 use Laravel\Fortify\Features;
+use App\Http\Controllers\Api\OfferPostController
 
 /*
 |--------------------------------------------------------------------------
