@@ -44,4 +44,5 @@ Route::get('/register', function () {
 })->name('register');
 
 
+
 require __DIR__.'/auth.php';

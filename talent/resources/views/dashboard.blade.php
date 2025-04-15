@@ -1,6 +1,6 @@
 <x-app-layout>
       {{-- Flash message --}}
-      @include('components.flash-message')
+      @include('components.flash-message') 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Dashboard') }}
